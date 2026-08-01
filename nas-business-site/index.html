@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nas' Business Services — Accueil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1B3A;
+    --navy-2:#132a56;
+    --blue:#2456C7;
+    --blue-light:#4C7DFF;
+    --silver:#AEB8C7;
+    --silver-light:#E7EAF0;
+    --bg:#F4F6FA;
+    --white:#FFFFFF;
+    --ink:#0B1B3A;
+    --ink-soft:#5B6478;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.brand{font-family:'Poppins',sans-serif;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+
+  .logo-img{height:46px;width:auto;flex-shrink:0;}
+
+  /* ===== HEADER ===== */
+  header{
+    background:var(--navy);
+    padding:18px 6%;
+    display:flex;align-items:center;justify-content:space-between;
+    position:sticky;top:0;z-index:50;
+  }
+  .logo-block{display:flex;align-items:center;gap:12px;}
+  .logo-text{color:#fff;line-height:1.1;}
+  .logo-text .top{font-size:19px;font-weight:700;letter-spacing:0.3px;}
+  .logo-text .top span{color:var(--blue-light);}
+  .logo-text .bottom{font-size:10.5px;letter-spacing:3px;color:var(--silver);font-weight:500;}
+
+  nav ul{display:flex;gap:34px;}
+  nav a{color:#E4E8F1;font-size:14.5px;font-weight:500;transition:color .2s;}
+  nav a:hover{color:var(--blue-light);}
+
+  .header-actions{display:flex;align-items:center;gap:18px;}
+  .btn-contact{
+    background:var(--blue);
+    color:#fff;
+    padding:10px 22px;
+    border-radius:8px;
+    font-size:14px;font-weight:600;
+    display:flex;align-items:center;gap:8px;
+    transition:background .2s;
+  }
+  .btn-contact:hover{background:var(--blue-light);}
+
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .burger span{width:24px;height:2px;background:#fff;}
+
+  /* ===== HERO ===== */
+  .hero{
+    background:var(--navy);
+    position:relative;
+    overflow:hidden;
+    padding:90px 6% 110px;
+    color:#fff;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    width:520px;height:520px;
+    background:linear-gradient(135deg,rgba(76,125,255,.25),transparent 70%);
+    top:-160px;right:-120px;
+    border-radius:50%;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:center;
+    position:relative;
+    z-index:2;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(76,125,255,.15);
+    border:1px solid rgba(76,125,255,.4);
+    color:var(--blue-light);
+    padding:7px 16px;border-radius:30px;
+    font-size:12.5px;font-weight:600;letter-spacing:1px;
+    margin-bottom:26px;
+  }
+  .hero h1{
+    font-size:46px;
+    font-weight:700;
+    line-height:1.18;
+    margin-bottom:22px;
+    letter-spacing:-0.5px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(90deg,var(--blue-light),#8FB3FF);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p{
+    font-size:16px;
+    color:var(--silver);
+    max-width:480px;
+    line-height:1.7;
+    margin-bottom:36px;
+  }
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--blue);
+    color:#fff;
+    padding:15px 30px;
+    border-radius:9px;
+    font-weight:600;font-size:15px;
+    box-shadow:0 12px 26px -8px rgba(36,86,199,.6);
+    transition:transform .2s, background .2s;
+  }
+  .btn-primary:hover{background:var(--blue-light);transform:translateY(-2px);}
+  .btn-secondary{
+    border:1.5px solid rgba(255,255,255,.3);
+    color:#fff;
+    padding:15px 28px;
+    border-radius:9px;
+    font-weight:600;font-size:15px;
+    transition:border-color .2s, background .2s;
+  }
+  .btn-secondary:hover{border-color:var(--blue-light);background:rgba(255,255,255,.06);}
+
+  .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;height:400px;}
+  .hero-diamond-frame{
+    width:300px;height:300px;
+    background:linear-gradient(135deg,var(--blue),var(--navy-2));
+    transform:rotate(45deg);
+    border-radius:36px;
+    position:relative;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
+  }
+  .hero-diamond-frame::after{
+    content:"";
+    position:absolute;inset:14px;
+    border:1.5px solid rgba(255,255,255,.18);
+    border-radius:26px;
+  }
+  .float-icon{
+    position:absolute;
+    background:#fff;
+    border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 18px 34px -12px rgba(0,0,0,.35);
+    overflow:hidden;
+    padding:8px;
+  }
+  .float-icon img{width:100%;height:100%;object-fit:contain;}
+  .fi-1{width:88px;height:100px;top:4%;left:0%;}
+  .fi-2{width:82px;height:70px;bottom:8%;left:-6%;}
+  .fi-3{width:96px;height:78px;bottom:0%;right:2%;}
+  .fi-4{width:80px;height:64px;top:10%;right:-4%;}
+
+  /* ===== TRUST STRIP ===== */
+  .trust-strip{
+    background:var(--white);
+    border-bottom:1px solid var(--silver-light);
+    padding:26px 6%;
+  }
+  .trust-inner{
+    max-width:1180px;margin:0 auto;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;
+  }
+  .trust-item{display:flex;align-items:center;gap:12px;color:var(--ink-soft);font-size:13.5px;font-weight:500;}
+  .trust-item svg{width:22px;height:22px;stroke:var(--blue);flex-shrink:0;}
+
+  /* ===== SECTION SHARED ===== */
+  section{padding:80px 6%;}
+  .section-inner{max-width:1180px;margin:0 auto;}
+  .section-head{text-align:center;max-width:560px;margin:0 auto 52px;}
+  .section-tag{
+    color:var(--blue);font-size:12.5px;font-weight:700;letter-spacing:2px;
+    text-transform:uppercase;margin-bottom:12px;display:block;
+  }
+  .section-head h2{font-size:32px;font-weight:700;margin-bottom:14px;letter-spacing:-0.4px;}
+  .section-head p{color:var(--ink-soft);font-size:15.5px;line-height:1.7;}
+
+  /* ===== CATEGORIES ===== */
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:22px;
+  }
+  .cat-card{
+    background:var(--white);
+    border:1px solid var(--silver-light);
+    border-radius:18px;
+    padding:34px 18px 26px;
+    text-align:center;
+    transition:transform .25s, box-shadow .25s, border-color .25s;
+  }
+  .cat-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 40px -18px rgba(11,27,58,.25);
+    border-color:transparent;
+  }
+  .cat-diamond{
+    width:72px;height:72px;
+    margin:0 auto 22px;
+    background:var(--silver-light);
+    transform:rotate(45deg);
+    border-radius:16px;
+    position:relative;
+    overflow:hidden;
+  }
+  .cat-diamond img{
+    position:absolute;inset:0;margin:auto;
+    transform:rotate(-45deg) scale(1.5);
+    width:100%;height:100%;
+    object-fit:contain;
+  }
+  .cat-card h3{font-size:15.5px;font-weight:600;margin-bottom:6px;}
+  .cat-card span{font-size:12.5px;color:var(--ink-soft);}
+
+  /* ===== FEATURED BANNER ===== */
+  .banner{
+    background:linear-gradient(120deg,var(--navy) 0%,var(--navy-2) 55%,var(--blue) 130%);
+    border-radius:26px;
+    padding:60px 56px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    gap:40px;
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+  }
+  .banner::before{
+    content:"";
+    position:absolute;
+    width:70px;height:70px;
+    border-radius:16px;
+    background:rgba(255,255,255,.08);
+    transform:rotate(45deg);
+    top:-20px;right:120px;
+  }
+  .banner::after{
+    content:"";
+    position:absolute;
+    width:44px;height:44px;
+    border-radius:10px;
+    background:rgba(255,255,255,.08);
+    transform:rotate(45deg);
+    bottom:-10px;right:280px;
+  }
+  .banner h2{font-size:28px;font-weight:700;margin-bottom:12px;letter-spacing:-0.3px;}
+  .banner p{color:var(--silver);font-size:15px;max-width:420px;line-height:1.7;}
+  .banner .btn-primary{margin-top:22px;display:inline-block;}
+
+  /* ===== PRODUCTS PREVIEW ===== */
+  .prod-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+  }
+  .prod-card{
+    background:var(--white);
+    border:1px solid var(--silver-light);
+    border-radius:18px;
+    overflow:hidden;
+    transition:box-shadow .25s, transform .25s;
+  }
+  .prod-card:hover{transform:translateY(-5px);box-shadow:0 20px 36px -18px rgba(11,27,58,.22);}
+  .prod-thumb{
+    height:170px;
+    background:var(--silver-light);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .prod-thumb img{width:100%;height:100%;object-fit:contain;padding:14px;}
+  .prod-badge{
+    position:absolute;top:12px;left:12px;
+    background:var(--navy);color:#fff;
+    font-size:10.5px;font-weight:700;letter-spacing:.5px;
+    padding:5px 10px;border-radius:20px;
+  }
+  .prod-info{padding:18px 18px 22px;}
+  .prod-info .cat{font-size:11.5px;color:var(--blue);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;display:block;}
+  .prod-info h3{font-size:15.5px;font-weight:600;margin-bottom:8px;}
+  .prod-info .desc{font-size:13px;color:var(--ink-soft);line-height:1.5;}
+
+  /* ===== WHY US ===== */
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .why-card{
+    background:var(--white);
+    border:1px solid var(--silver-light);
+    border-radius:18px;
+    padding:32px 26px;
+  }
+  .why-icon{
+    width:50px;height:50px;
+    border-radius:12px;
+    background:var(--silver-light);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+  }
+  .why-icon svg{width:24px;height:24px;stroke:var(--blue);}
+  .why-card h3{font-size:16.5px;font-weight:600;margin-bottom:10px;}
+  .why-card p{font-size:14px;color:var(--ink-soft);line-height:1.65;}
+
+  /* ===== CONTACT CTA ===== */
+  .contact-cta{
+    background:var(--navy);
+    border-radius:26px;
+    padding:64px 56px;
+    text-align:center;
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+  }
+  .contact-cta h2{font-size:30px;font-weight:700;margin-bottom:14px;}
+  .contact-cta p{color:var(--silver);font-size:15.5px;margin-bottom:32px;}
+  .contact-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+  .contact-pill{
+    display:flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.16);
+    padding:13px 24px;border-radius:40px;
+    font-size:14.5px;font-weight:600;
+  }
+  .contact-pill svg{width:18px;height:18px;stroke:var(--blue-light);}
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--navy-2);
+    color:var(--silver);
+    padding:50px 6% 24px;
+  }
+  .footer-inner{
+    max-width:1180px;margin:0 auto;
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:34px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .footer-brand p{font-size:13.5px;color:var(--silver);line-height:1.7;margin-top:16px;max-width:260px;}
+  .footer-col h4{color:#fff;font-size:14px;font-weight:600;margin-bottom:16px;}
+  .footer-col ul li{margin-bottom:10px;}
+  .footer-col a{font-size:13.5px;color:var(--silver);transition:color .2s;}
+  .footer-col a:hover{color:var(--blue-light);}
+  .footer-bottom{
+    max-width:1180px;margin:0 auto;
+    padding-top:22px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-size:12.5px;color:#8791A8;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:980px){
+    nav{display:none;}
+    .burger{display:flex;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{height:300px;order:-1;}
+    .hero h1{font-size:34px;}
+    .cat-grid{grid-template-columns:repeat(3,1fr);}
+    .prod-grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:1fr;}
+    .banner{grid-template-columns:1fr;text-align:center;}
+    .banner p{margin:0 auto;}
+    .footer-inner{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:560px){
+    .cat-grid{grid-template-columns:repeat(2,1fr);}
+    .prod-grid{grid-template-columns:1fr;}
+    .trust-inner{flex-direction:column;align-items:flex-start;}
+    .footer-inner{grid-template-columns:1fr;}
+    .contact-cta{padding:44px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-block">
+    <img src="images/logo.png" alt="Nas' Business Services" class="logo-img">
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#categories">Produits</a></li>
+      <li><a href="#pourquoi">Pourquoi nous</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="header-actions">
+    <a href="#contact" class="btn-contact">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 5.5C3 4.1 4.1 3 5.5 3h2.7c.5 0 1 .3 1.2.8l1.5 3.6c.2.5 0 1-.4 1.4L8.9 10c1 2.3 2.8 4.1 5.1 5.1l1.2-1.6c.3-.4.9-.6 1.4-.4l3.6 1.5c.5.2.8.7.8 1.2v2.7c0 1.4-1.1 2.5-2.5 2.5C9.5 21 3 14.5 3 5.5Z"/></svg>
+      Contact
+    </a>
+    <div class="burger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<section id="accueil" class="hero" style="padding-top:90px;">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        REVENDEUR APPLE À DAKAR
+      </div>
+      <h1>Vos produits Apple, <em>authentiques</em> et livrés en toute confiance</h1>
+      <p>iPhone, MacBook, Apple Watch, AirPods et accessoires. Une sélection soignée, un service personnalisé, à Dakar.</p>
+      <div class="hero-cta">
+        <a href="#categories" class="btn-primary">Découvrir la boutique</a>
+        <a href="#contact" class="btn-secondary">Nous contacter</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-diamond-frame"></div>
+      <div class="float-icon fi-1"><img src="images/phone-case.png" alt="Coques iPhone"></div>
+      <div class="float-icon fi-2"><img src="images/watches.png" alt="Apple Watch"></div>
+      <div class="float-icon fi-3"><img src="images/macbook.png" alt="MacBook"></div>
+      <div class="float-icon fi-4"><img src="images/airpods.png" alt="AirPods"></div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Produits 100% authentiques</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11Z"/></svg>Garantie sur tous les appareils</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Livraison rapide à Dakar</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>Accompagnement personnalisé</div>
+  </div>
+</div>
+
+<section id="categories">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">Nos univers</span>
+      <h2>Explorez notre gamme Apple</h2>
+      <p>Une sélection pensée pour chaque besoin, du smartphone au poste de travail.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-diamond"><img src="images/phone-case.png" alt="iPhone"></div>
+        <h3>iPhone</h3>
+        <span>Tous modèles</span>
+      </div>
+      <div class="cat-card">
+        <div class="cat-diamond"><img src="images/macbook.png" alt="MacBook"></div>
+        <h3>MacBook</h3>
+        <span>Air &amp; Pro</span>
+      </div>
+      <div class="cat-card">
+        <div class="cat-diamond"><img src="images/airpods.png" alt="AirPods"></div>
+        <h3>AirPods</h3>
+        <span>Pro &amp; Max</span>
+      </div>
+      <div class="cat-card">
+        <div class="cat-diamond"><img src="images/watches.png" alt="Apple Watch"></div>
+        <h3>Apple Watch</h3>
+        <span>Series &amp; Ultra</span>
+      </div>
+      <div class="cat-card">
+        <div class="cat-diamond"><img src="images/cases.png" alt="Accessoires"></div>
+        <h3>Accessoires</h3>
+        <span>Coques &amp; chargeurs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="section-inner">
+    <div class="banner">
+      <div>
+        <h2>Un accompagnement sur mesure pour chaque achat</h2>
+        <p>Nas' Business Services vous conseille selon votre usage et votre budget, avec un suivi personnalisé du premier contact à la livraison.</p>
+        <a href="#contact" class="btn-primary">Parler à un conseiller</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="produits" style="padding-top:20px;">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">Sélection</span>
+      <h2>Nos produits phares</h2>
+      <p>Un aperçu de ce que vous retrouverez dans notre catalogue.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-thumb"><span class="prod-badge">Populaire</span><img src="images/phone-case.png" alt="iPhone"></div>
+        <div class="prod-info"><span class="cat">iPhone</span><h3>iPhone dernière génération</h3><p class="desc">Design premium, appareil photo avancé.</p></div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-thumb"><img src="images/macbook.png" alt="MacBook"></div>
+        <div class="prod-info"><span class="cat">MacBook</span><h3>MacBook Air / Pro</h3><p class="desc">Puissance et autonomie pour le travail au quotidien.</p></div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-thumb"><span class="prod-badge">Nouveau</span><img src="images/airpods.png" alt="AirPods"></div>
+        <div class="prod-info"><span class="cat">AirPods</span><h3>AirPods Pro</h3><p class="desc">Réduction de bruit active, son immersif.</p></div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-thumb"><img src="images/watches.png" alt="Apple Watch"></div>
+        <div class="prod-info"><span class="cat">Apple Watch</span><h3>Apple Watch</h3><p class="desc">Suivi santé et style, plusieurs coloris disponibles.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pourquoi">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">Pourquoi Nas' Business Services</span>
+      <h2>La confiance avant tout</h2>
+      <p>Ce qui nous distingue dans chaque transaction.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>Authenticité garantie</h3>
+        <p>Chaque produit est vérifié avant d'être proposé à la vente, pour votre tranquillité d'esprit.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></div>
+        <h3>Service personnalisé</h3>
+        <p>Un conseiller vous accompagne selon vos besoins réels, sans pression commerciale.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+        <h3>Livraison rapide</h3>
+        <p>Recevez votre commande rapidement à Dakar et ses environs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-cta">
+      <h2>Une question, une commande ?</h2>
+      <p>Notre équipe vous répond rapidement.</p>
+      <div class="contact-row">
+        <div class="contact-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 5.5C3 4.1 4.1 3 5.5 3h2.7c.5 0 1 .3 1.2.8l1.5 3.6c.2.5 0 1-.4 1.4L8.9 10c1 2.3 2.8 4.1 5.1 5.1l1.2-1.6c.3-.4.9-.6 1.4-.4l3.6 1.5c.5.2.8.7.8 1.2v2.7c0 1.4-1.1 2.5-2.5 2.5C9.5 21 3 14.5 3 5.5Z"/></svg>
+          +221 77 483 19 28
+        </div>
+        <div class="contact-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          Écrivez-nous
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-block">
+        <img src="images/logo.png" alt="Nas' Business Services" class="logo-img">
+      </div>
+      <p>Votre revendeur de confiance pour les produits Apple à Dakar : iPhone, MacBook, AirPods, Apple Watch et accessoires.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Produits</h4>
+      <ul>
+        <li><a href="#">iPhone</a></li>
+        <li><a href="#">MacBook</a></li>
+        <li><a href="#">AirPods</a></li>
+        <li><a href="#">Apple Watch</a></li>
+        <li><a href="#">Accessoires</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Entreprise</h4>
+      <ul>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#pourquoi">Pourquoi nous</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+221774831928">+221 77 483 19 28</a></li>
+        <li><a href="#">Dakar, Sénégal</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Nas' Business Services. Tous droits réservés.</span>
+    <span>Vente d'iPhone, MacBook, AirPods, Apple Watch et accessoires.</span>
+  </div>
+</footer>
+
+</body>
+</html>
