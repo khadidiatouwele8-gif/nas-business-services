@@ -440,9 +440,21 @@
     .burger.active span:nth-child(2){opacity:0;}
     .burger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
     .burger span{transition:all .25s ease;}
+    .hero{padding:36px 6% 50px;}
     .hero-grid{grid-template-columns:1fr;}
-    .hero-visual{height:320px;order:-1;}
-    .hero h1{font-size:36px;}
+    .hero-visual{
+      height:auto;order:-1;
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-bottom:10px;
+    }
+    .hero-blob{display:none;}
+    .float-icon{
+      position:static;
+      width:100% !important;height:130px !important;
+      animation:none !important;
+    }
+    .hero h1{font-size:32px;}
     .cat-grid{grid-template-columns:repeat(3,1fr);}
     .prod-grid{grid-template-columns:repeat(2,1fr);}
     .why-grid{grid-template-columns:1fr;}
@@ -483,7 +495,7 @@
   </div>
 </header>
 
-<section id="accueil" class="hero" style="padding-top:90px;">
+<section id="accueil" class="hero">
   <div class="hero-grid">
     <div>
       <div class="eyebrow">
